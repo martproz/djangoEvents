@@ -3,10 +3,7 @@ import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
 
-####################################################
-#PASO DE ESTÁTICO A DINÁMICO
 def home(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
-####################################################
     month = month.capitalize()
     month_number = list(calendar.month_name).index(month)
     month_number = int(month_number) 
@@ -17,7 +14,7 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
     current_year = now.year
     time = now.strftime('%I:%M:%S %p')
 
-    return render(request, 'home.html', {
+    return render(request, 'events/home.html', {
         'first_name': name,
         'year': year,
         'month': month,
@@ -25,5 +22,4 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
         'cal': cal, 
         'current_year': current_year,
         'time': time,
-####################################################
     })
