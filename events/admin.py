@@ -2,14 +2,20 @@ from django.contrib import admin
 from .models import Venue
 from .models import MyClubUser
 from .models import Event
-# El . quiere decir "en el mismo directorio", events/models.py
 
 #admin.site.register(Venue)
 admin.site.register(MyClubUser)
-admin.site.register(Event)
+#admin.site.register(Event)
 
 @admin.register(Venue)
 class VenueAdmin(admin.ModelAdmin):
     list_display =  ('name', 'adress', 'phone')
-    ordering = ('name',) #ordena alfabéticamente lqs ve en admin
+    ordering = ('name',)
     search_fields = ('name', 'address')
+
+@admin.register(Event)
+class EventAdmin(admin.ModelAdmin):
+    fields = (('name', 'venue'), 'event_date', 'description', 'manager')
+    list_display =  ('name', 'event_date', 'venue')
+    list_filter = ('event_date', 'venue')
+    ordering = ('-event_date',)
