@@ -1,3 +1,5 @@
 {
-    "editor.useTabStops": true
+    "editor.useTabStops": true,
+    "prettier.singleQuote": true,
+    "prettier.jsxSingleQuote": true,
 }
