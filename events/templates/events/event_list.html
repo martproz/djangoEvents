@@ -6,33 +6,31 @@
     <br />
 {% for event in event_list %}
 
-{% comment %} CARD {% endcomment %}
-<div class="card">
-    <div class="card-header">
-        <li>{{ event }}</li>
-    </div>
-    <div class="card-body">
-        <h5 class="card-title">
-            Venue: {{ event.venue }}
-        </h5>
-        <p class="card-text">
-            <ul>
-                <li><strong>Date:</strong> {{ event.event_date }}</li>
-                <li><strong>Venue Website:</strong> {{ event.venue.web }}</li>
-                <li><strong>Manager:</strong> {{ event.manager }}</li>
-                <li><strong>Description:</strong> {{ event.description }}</li>
-                <li><strong>Attendees:</strong> <br />
-                    {% for user in event.attendees.all %}
-                    {{ user }} <br />
-                    {% endfor %}
-                </li>
-            </ul>
-        </p>
-    </div>
-</div>
-{% comment %} END_CARD {% endcomment %}
+        <div class="card">
+            <div class="card-header">
+                <li>{{ event }}</li>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">
+                    Venue: {{ event.venue }}
+                </h5>
+                <p class="card-text">
+                    <ul>
+                        <li><strong>Date:</strong> {{ event.event_date }}</li>
+                        <li><strong>Venue Website:</strong> {{ event.venue.web }}</li>
+                        <li><strong>Manager:</strong> {{ event.manager }}</li>
+                        <li><strong>Description:</strong> {{ event.description }}</li>
+                        <li><strong>Attendees:</strong> <br />
+                            {% for user in event.attendees.all %}
+                            {{ user }} <br />
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </p>
+            </div>
+        </div>
 
-    <br />
+            <br />
 {% endfor %}
 
 
