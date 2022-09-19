@@ -7,6 +7,17 @@ from .models import Event, Venue
 from .forms import VenueForm, EventForm
 
 
+def delete_venue(request, venue_id):
+    venue = Venue.objects.get(pk=venue_id)
+    venue.delete()
+    return redirect('list-venues')
+
+def delete_event(request, event_id):
+    event = Event.objects.get(pk=event_id)
+    event.delete()
+    return redirect('event-list')
+
+
 def add_event(request):
     submitted = False
     if request.method == "POST":
@@ -21,6 +32,18 @@ def add_event(request):
             submitted = True
 
     return render(request, 'events/add_event.html', {'form': form, 'submitted': submitted})
+
+
+def update_event(request, event_id):
+	event = Event.objects.get(pk=event_id)
+	form = EventForm(request.POST or None, instance=event)
+	if form.is_valid():
+		form.save()
+		return redirect('event-list')
+
+	return render(request, 'events/update_event.html',
+               {'event': event,
+                'form': form})
 
 
 def update_venue(request, venue_id):
