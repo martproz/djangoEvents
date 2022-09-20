@@ -5,6 +5,7 @@ from datetime import datetime
 from django.http import HttpResponseRedirect
 from .models import Event, Venue
 from .forms import VenueForm, EventForm
+from django.views.generic import TemplateView
 
 
 def delete_venue(request, venue_id):
@@ -119,3 +120,6 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
         'current_year': current_year,
         'time': time,
     })
+
+class Error404View (TemplateView):
+    template_name = "events/error404.html"
