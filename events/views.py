@@ -6,6 +6,8 @@ from django.http import HttpResponseRedirect
 from .models import Event, Venue
 from .forms import VenueForm, EventForm
 
+def about_us(request):
+    return render(request, 'events/about_us.html')
 
 def delete_venue(request, venue_id):
     venue = Venue.objects.get(pk=venue_id)
