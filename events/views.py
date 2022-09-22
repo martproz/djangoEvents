@@ -107,7 +107,7 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
     month_number = int(month_number) 
 
     cal = HTMLCalendar().formatmonth(year, month_number)
-    name = ''
+    name = 'User'
     now = datetime.now()
     current_year = now.year
     time = now.strftime('%I:%M:%S %p')
