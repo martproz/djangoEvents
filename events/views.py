@@ -84,10 +84,10 @@ def list_venues(request):
 def add_venue(request):
     submitted = False
     if request.method == "POST":
-        form = VenueForm(request.POST)
+        form = VenueForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/add_venue?submitted=True') #LO MANDA AL GET REQUEST
+            return HttpResponseRedirect('/add_venue?submitted=True') 
     else:
         form = VenueForm
         if 'submitted' in request.GET:

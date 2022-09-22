@@ -8,7 +8,7 @@ class Venue(models.Model):
     phone = models.CharField('Contact Phone', max_length=25, blank=True)
     web = models.URLField('Website Address', blank=True)
     email_adress = models.EmailField('Email Adress', blank=True)
-
+    venue_image = models.ImageField(null=True, blank=True, upload_to="images/")
     def __str__(self):
         return self.name
 
