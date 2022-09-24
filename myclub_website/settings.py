@@ -96,12 +96,18 @@ MEDIA_ROOT = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-db_from_newenv = dj_database_url.config(conn_max_age=500)
-
-
-DATABASES['default'].update(db_from_newenv)
-
-STATIC_ROOT = BASE_DIR / 'events/static'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'events/static'),)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+"""
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+STATIC_ROOT = BASE_DIR / "static"
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'staticfiles'),)
+"""
+
+
+
