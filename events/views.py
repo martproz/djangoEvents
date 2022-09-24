@@ -5,6 +5,7 @@ from datetime import datetime
 from django.http import HttpResponseRedirect
 from .models import Event, Venue
 from .forms import VenueForm, EventForm
+from django.views.generic import TemplateView
 from .models import Room, Message
 from django.http import HttpResponse, JsonResponse
 
@@ -86,10 +87,10 @@ def list_venues(request):
 def add_venue(request):
     submitted = False
     if request.method == "POST":
-        form = VenueForm(request.POST)
+        form = VenueForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/add_venue?submitted=True') #LO MANDA AL GET REQUEST
+            return HttpResponseRedirect('/add_venue?submitted=True') 
     else:
         form = VenueForm
         if 'submitted' in request.GET:
@@ -109,7 +110,7 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
     month_number = int(month_number) 
 
     cal = HTMLCalendar().formatmonth(year, month_number)
-    name = 'John'
+    name = 'User'
     now = datetime.now()
     current_year = now.year
     time = now.strftime('%I:%M:%S %p')
@@ -124,6 +125,8 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
         'time': time,
     })
 
+class Error404View (TemplateView):
+    template_name = "events/error404.html"
 def messages(request):
     return render(request,'events/messages.html')
 

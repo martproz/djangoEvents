@@ -26,14 +26,15 @@ class EventForm(ModelForm):
 class VenueForm(ModelForm):
     class Meta:
         model = Venue
-        fields = ('name', 'adress', 'zip_code', 'phone', 'web', 'email_adress')
+        fields = ('name', 'adress', 'zip_code', 'phone', 'web', 'email_adress', 'venue_image')
         labels = {
             'name': '',
             'adress': '',
             'zip_code': '',
             'phone': '',
             'web': '',
-            'email_adress': ''
+            'email_adress': '', 
+            'venue_image': '',
         }
 
         widgets = {
