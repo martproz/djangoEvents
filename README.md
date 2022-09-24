@@ -26,7 +26,6 @@
 [LinkedIn][linkedin-shield]
 
 
-
 <!-- PROJECT LOGO -->
   <h3 align="center">Events Project - Prozapas y Moreno</h3>
 
