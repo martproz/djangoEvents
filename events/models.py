@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
 
 class Venue(models.Model):
     name = models.CharField('Venue Name', max_length=120)
@@ -38,3 +39,11 @@ class Event(models.Model):
     # soon as we create an image, the media directory will be created automatically
     # inside that media file will be a subdirectory called images
     # where all our images will be saved
+
+class Room(models.Model):
+    name = models.CharField(max_length=1000)
+class Message(models.Model):
+    value = models.CharField(max_length=1000000)
+    date = models.DateTimeField(default=datetime.now, blank=True)
+    user = models.CharField(max_length=1000000)
+    room = models.CharField(max_length=1000000)
