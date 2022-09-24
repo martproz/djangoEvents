@@ -127,6 +127,7 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
 
 class Error404View (TemplateView):
     template_name = "events/error404.html"
+
 def messages(request):
     return render(request,'events/messages.html')
 
@@ -164,3 +165,6 @@ def getMessages(request, room):
 
     messages = Message.objects.filter(room=room_details.id)
     return JsonResponse({"messages":list(messages.values())})
+
+class Error500View (TemplateView):
+    template_name = "events/error404.html"
