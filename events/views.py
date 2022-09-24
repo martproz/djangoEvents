@@ -5,12 +5,9 @@ from datetime import datetime
 from django.http import HttpResponseRedirect
 from .models import Event, Venue
 from .forms import VenueForm, EventForm
-<<<<<<< HEAD
 from django.views.generic import TemplateView
-=======
 from .models import Room, Message
 from django.http import HttpResponse, JsonResponse
->>>>>>> 2bea1d1bb4b771d984eac83ae3eaf2d78937143f
 
 def about_us(request):
     return render(request, 'events/about_us.html')
@@ -128,10 +125,8 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
         'time': time,
     })
 
-<<<<<<< HEAD
 class Error404View (TemplateView):
     template_name = "events/error404.html"
-=======
 def messages(request):
     return render(request,'events/messages.html')
 
@@ -169,4 +164,3 @@ def getMessages(request, room):
 
     messages = Message.objects.filter(room=room_details.id)
     return JsonResponse({"messages":list(messages.values())})
->>>>>>> 2bea1d1bb4b771d984eac83ae3eaf2d78937143f
