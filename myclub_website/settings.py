@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,10 +21,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'events',
     'members',
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -93,6 +96,12 @@ MEDIA_ROOT = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+db_from_newenv = dj_database_url.config(conn_max_age=500)
+
+
+DATABASES['default'].update(db_from_newenv)
+
+STATIC_ROOT = BASE_DIR / 'events/static'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'events/static'),)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
