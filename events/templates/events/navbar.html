@@ -31,6 +31,7 @@
                     <a class="nav-link" href="{% url 'list-venues' %}">Venues</a>
                 </li>
 
+<<<<<<< HEAD
                 {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Logout</a>
@@ -44,9 +45,11 @@
                         <a class="nav-link" href="{% url 'login' %}">Login</a>
                     </li>
                 {% endif %}
+=======
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'messages' %}">Chat</a>
                 </li>
+>>>>>>> 2bea1d1bb4b771d984eac83ae3eaf2d78937143f
             </ul>
             <form class="d-flex" method=POST action={% url 'search-venues' %}>
                 {% csrf_token %}
